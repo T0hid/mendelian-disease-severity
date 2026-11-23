@@ -1,0 +1,5 @@
+Scenario,winner,runner_up,margin
+S1_Mechanistic,ExtraTrees,LightGBM,0.028954630448756125
+S1b_Disease_Context,ExtraTrees,OrdinalDecomp,0.008023544420763917
+S2_Mech_Pheno,OrdinalDecomp,LightGBM,0.04791037428484768
+S3_Phenotype,OrdinalDecomp,MultinomialLogisticRegression,0.012773340370348607

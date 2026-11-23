@@ -1,0 +1,31 @@
+mondo_id,n_pairs,disease_name,percent_of_pairs
+MONDO:0100164,9,permanent neonatal diabetes mellitus,0.1429025087329311
+MONDO:0015452,9,Coffin-Siris syndrome,0.1429025087329311
+MONDO:0019625,9,familial thoracic aortic aneurysm and aortic dissection,0.1429025087329311
+MONDO:0004691,8,autosomal dominant polycystic kidney disease,0.12702445220704986
+MONDO:0017990,7,catecholaminergic polymorphic ventricular tachycardia,0.11114639568116863
+MONDO:0008233,6,pheochromocytoma,0.0952683391552874
+MONDO:0017366,6,hereditary pheochromocytoma-paraganglioma,0.0952683391552874
+MONDO:0015280,5,cardiofaciocutaneous syndrome,0.07939028262940616
+MONDO:0005835,5,Lynch syndrome,0.07939028262940616
+MONDO:0009180,5,"junctional epidermolysis bullosa, non-Herlitz type",0.07939028262940616
+MONDO:0015253,5,Diamond-Blackfan anemia,0.07939028262940616
+MONDO:0020507,5,leukoencephalopathy with vanishing white matter 1,0.07939028262940616
+MONDO:0008018,4,Muir-Torre syndrome,0.06351222610352493
+MONDO:0008855,4,MHC class II deficiency,0.06351222610352493
+MONDO:0100176,4,AP-4 deficiency syndrome,0.06351222610352493
+MONDO:0019019,4,osteogenesis imperfecta,0.06351222610352493
+MONDO:0010159,4,mismatch repair cancer syndrome 1,0.06351222610352493
+MONDO:0019354,4,Stickler syndrome,0.06351222610352493
+MONDO:0009970,4,renal tubular dysgenesis of genetic origin,0.06351222610352493
+MONDO:0016419,4,hereditary breast carcinoma,0.06351222610352493
+MONDO:0004976,4,amyotrophic lateral sclerosis,0.06351222610352493
+MONDO:0007915,4,systemic lupus erythematosus,0.06351222610352493
+MONDO:0013892,4,C3 glomerulonephritis,0.06351222610352493
+MONDO:0016033,4,Cornelia de Lange syndrome,0.06351222610352493
+MONDO:0016660,4,autosomal recessive primary microcephaly,0.06351222610352493
+MONDO:0005260,4,autism,0.06351222610352493
+MONDO:0000453,4,short QT syndrome,0.06351222610352493
+MONDO:0018214,4,generalized epilepsy with febrile seizures plus,0.06351222610352493
+MONDO:0008542,4,tetralogy of fallot,0.06351222610352493
+MONDO:0007187,3,nevoid basal cell carcinoma syndrome,0.0476341695776437

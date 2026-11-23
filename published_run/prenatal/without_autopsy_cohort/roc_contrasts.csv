@@ -1,0 +1,4 @@
+contrast,auc,n_pos,n_neg
+Death vs live birth (no NICU),0.7489489489489489,37,90
+TOP vs live birth (no NICU),0.7460252935862692,123,90
+Death vs NICU / special care,0.6331081081081081,37,100
