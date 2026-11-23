@@ -158,6 +158,7 @@ def _check_split(container, run_dir: str) -> Dict[str, Any]:
 
 
 BUILD_TABLES = (
+    "corpus_reconciliation.csv",
     "feature_provenance_table.csv",
     "gene_disease_mapping_filter_audit.csv",
     "hpo_column_term_names.csv",

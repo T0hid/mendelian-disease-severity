@@ -7,9 +7,13 @@ authors:
     given-names: Tohid
 repository-code: "https://github.com/T0hid/mendelian-disease-severity"
 license: MIT
-version: 1.0.0
-date-released: "2026-11-23"
+version: 1.0.1
+doi: 10.5281/zenodo.24467430
+date-released: "2026-11-24"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24467430"
+    description: "Code, all versions (Zenodo concept DOI)"
   - type: doi
     value: "10.5281/zenodo.24464650"
     description: "Input data (training tables and ontologies), Zenodo"

@@ -3,7 +3,8 @@
 ``gene_disease_mapping_HPO_rebuilt.csv`` lists every candidate gene-disease pair (8,467) with
 its decision (``status`` KEPT or DROP, ``drop_reason`` and ``use_in_rebuilt_corpus``). Only the
 6,298 kept pairs are used; every other row of the training table is removed before any feature
-is built. The benchmark and the scorer apply the same filter.
+is built. The benchmark and the scorer apply the same filter. ``corpus_reconciliation`` counts how
+the kept pairs relate to the pairs with a severity class in the earlier study of the labelling agent.
 """
 
 import os
@@ -14,6 +15,56 @@ import pandas as pd
 
 def _normalise(value: Any) -> str:
     return str(value).strip().upper()
+
+
+# Groups of drop_reason values in the mapping, in the wording of the Online Methods.
+EXCLUSION_GROUPS = (
+    ("no gene-level features", ("no gene-level features",)),
+    ("inclusion rules", ("rule (",)),
+    (
+        "manual review",
+        (
+            "generic tumour type",
+            "low-penetrance risk entry",
+            "susceptibility entry not resolved",
+            "not a germline Mendelian disease",
+        ),
+    ),
+)
+
+
+def corpus_reconciliation(mapping_path: str) -> pd.DataFrame:
+    """Link the corpus to the gene-disease pairs that have a severity class in the earlier study (ref. 16).
+
+    A candidate pair has a severity class there when it has a (frequency-filtered) severity label and
+    its GenCC support is not Limited only. The table counts those pairs, the pairs kept here and the
+    reasons the others were excluded (Data and severity labels).
+    """
+    mapping = pd.read_csv(mapping_path, low_memory=False)
+    for column in ("severity", "classification_title", "status", "drop_reason"):
+        if column not in mapping.columns:
+            raise ValueError(f"{mapping_path} has no column {column!r}.")
+    classified = mapping["severity"].notna() & mapping["classification_title"].astype(str).str.strip().ne("Limited")
+    kept = mapping["status"].eq("KEPT")
+    reasons = mapping.loc[classified & ~kept, "drop_reason"].astype(str)
+
+    rows = [
+        ("candidate gene-disease pairs", len(mapping)),
+        ("pairs with a severity class in ref. 16", int(classified.sum())),
+        ("pairs kept in this corpus", int((classified & kept).sum())),
+        ("kept pairs without a severity class in ref. 16", int((kept & ~classified).sum())),
+        ("pairs with a severity class in ref. 16 excluded here", len(reasons)),
+    ]
+    grouped = pd.Series(False, index=reasons.index)
+    for group, prefixes in EXCLUSION_GROUPS:
+        in_group = reasons.apply(lambda reason: reason.startswith(prefixes))
+        grouped |= in_group
+        rows.append((f"excluded here: {group}", int(in_group.sum())))
+        if group == "manual review":
+            for reason, count in reasons.loc[in_group].value_counts().sort_index().items():
+                rows.append((f"excluded here: manual review: {reason}", int(count)))
+    rows.append(("excluded here: other reasons", int((~grouped).sum())))
+    return pd.DataFrame(rows, columns=["quantity", "n"])
 
 
 def load_allowed_pairs(mapping_path: str) -> Tuple[Set[Tuple[str, str]], dict]:

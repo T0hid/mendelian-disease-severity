@@ -12,7 +12,7 @@ from typing import Dict, List, Tuple
 import numpy as np
 import pandas as pd
 
-from ..mapping import apply_rebuilt_mapping
+from ..mapping import apply_rebuilt_mapping, corpus_reconciliation
 from .config import Config
 from .ontology import (
     parse_hpo_obo,
@@ -213,6 +213,9 @@ def build_gene_disease_target(primary_data_path: str) -> pd.DataFrame:
         log=logger.log,
         audit_dir=os.path.join(Config.OUTPUT_DIR, "results"),
         audit_name="gene_disease_mapping_filter_audit.csv",
+    )
+    corpus_reconciliation(Config.REBUILT_GENE_DISEASE_MAPPING).to_csv(
+        os.path.join(Config.OUTPUT_DIR, "results", "corpus_reconciliation.csv"), index=False
     )
     df["target_severity"] = df["target_severity"].astype(str).str.strip()
     valid_mask = df["target_severity"].isin(Config.TARGET_MAP)

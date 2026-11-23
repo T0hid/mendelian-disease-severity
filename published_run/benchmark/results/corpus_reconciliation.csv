@@ -1,0 +1,14 @@
+quantity,n
+candidate gene-disease pairs,8467
+pairs with a severity class in ref. 16,6709
+pairs kept in this corpus,6298
+kept pairs without a severity class in ref. 16,0
+pairs with a severity class in ref. 16 excluded here,411
+excluded here: no gene-level features,268
+excluded here: inclusion rules,82
+excluded here: manual review,61
+"excluded here: manual review: generic tumour type, not a hereditary syndrome",23
+excluded here: manual review: low-penetrance risk entry or drug response,22
+"excluded here: manual review: not a germline Mendelian disease (somatic, alloimmune, benign variant or multifactorial)",7
+"excluded here: manual review: susceptibility entry not resolved on manual review, excluded by default",9
+excluded here: other reasons,0

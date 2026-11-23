@@ -1,6 +1,6 @@
 # Predicting severity in Mendelian disorders
 
-Code, data and trained models for the manuscript "Development and evaluation of machine-learning models for Mendelian disease severity".
+Code, data and trained models for the manuscript "Development and evaluation of machine-learning models for Mendelian disease severity". Archived at Zenodo: code [10.5281/zenodo.24467430](https://doi.org/10.5281/zenodo.24467430), input data [10.5281/zenodo.24464650](https://doi.org/10.5281/zenodo.24464650).
 
 ![Study design](docs/figure_1_study_design.jpg)
 
@@ -171,7 +171,7 @@ tests/                     quick tests run by GitHub Actions
 
 ## Data
 
-`data/training_tables.zip` and `data/ontologies.zip` hold every input of the benchmark and the scorer; `run.py` unpacks them into `data/inputs` and checks each file against `data/checksums.json`. The ontology releases are recorded in `published_run/benchmark/pipeline_manifest.json`. How the 6,298 gene-disease pairs and their severity labels were obtained from 8,467 candidate pairs is described under "Data and severity labels" in the Online Methods; `gene_disease_mapping_HPO_rebuilt.csv` records the decision for every candidate pair. Feature sources are listed in Supplementary Table 1. `final_gnn_dataset.csv` holds gene-level annotation terms; despite its name, no graph neural network is used. The two archives are also deposited at Zenodo: [10.5281/zenodo.24464650](https://doi.org/10.5281/zenodo.24464650).
+`data/training_tables.zip` and `data/ontologies.zip` hold every input of the benchmark and the scorer; `run.py` unpacks them into `data/inputs` and checks each file against `data/checksums.json`. The ontology releases are recorded in `published_run/benchmark/pipeline_manifest.json`. How the 6,298 gene-disease pairs and their severity labels were obtained from 8,467 candidate pairs is described under "Data and severity labels" in the Online Methods; `gene_disease_mapping_HPO_rebuilt.csv` records the decision for every candidate pair. `corpus_reconciliation.csv` (`severity/mapping.py: corpus_reconciliation`, written when the features are built and checked by `run.py verify`) links the corpus to the 6,709 pairs with a severity class in the earlier study of the labelling agent: 6,298 are kept here, and the other 411 were excluded because the gene had no gene-level features, by the inclusion rules or on manual review. Feature sources are listed in Supplementary Table 1. `final_gnn_dataset.csv` holds gene-level annotation terms; despite its name, no graph neural network is used. The two archives are also deposited at Zenodo: [10.5281/zenodo.24464650](https://doi.org/10.5281/zenodo.24464650).
 
 `published_run/benchmark/models` holds the four validation-selected models, compressed with xz. `published_run/benchmark/results/all_results.pkl` holds their test-set predictions and metrics.
 
